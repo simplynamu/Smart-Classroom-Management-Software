@@ -10,6 +10,7 @@ import AdminRegisterPage from './pages/admin/AdminRegisterPage';
 import ChooseUser from './pages/ChooseUser';
 import TeacherQRScanner from './pages/teacher/TeacherQRScanner'; // adjust path if needed
 
+
 const App = () => {
   const { currentRole } = useSelector(state => state.user);
 

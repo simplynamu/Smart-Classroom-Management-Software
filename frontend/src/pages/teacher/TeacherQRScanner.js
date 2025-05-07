@@ -1,13 +1,14 @@
 import React from 'react';
-import QRScanner from '../../components/QRScanner';
+import TeacherQRScanner from '../../components/TeacherQRScanner';
 
-const TeacherQRScanner = () => {
+const QRScanner = () => {
     return (
         <div>
             <h1>Scan Student QR Code</h1>
-            <QRScanner />
+            <TeacherQRScanner />
         </div>
     );
 };
 
-export default TeacherQRScanner;
+export default QRScanner;
+

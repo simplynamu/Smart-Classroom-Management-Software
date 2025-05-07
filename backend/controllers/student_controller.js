@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 const Student = require('../models/studentSchema.js');
 const Subject = require('../models/subjectSchema.js');
+const Attendance = require('../models/attendanceSchema');
 
 
 // mine 
@@ -32,7 +33,66 @@ const Subject = require('../models/subjectSchema.js');
      }
 };
 
-  
+// mine -chetan get id's  from api
+
+// Get student data by random QR code number
+
+// const getStudentByRandomNumber = async (req, res) => {
+//   try {
+//     const { random } = req.query;
+
+//     if (!random) {
+//       return res.status(400).json({ success: false, message: "Random number is required" });
+//     }
+
+//     const student = await Student.findOne({ qrCodeValue: random });
+
+//     if (!student) {
+//       return res.status(404).json({ success: false, message: "Student not found" });
+//     }
+
+//     res.status(200).json({ success: true, student });
+//   } catch (error) {
+//     console.error("Error scanning QR:", error);
+//     res.status(500).json({ success: false, error: error.message });
+//   }
+// };
+
+
+const getStudentByRandomNumber = async (req, res) => {
+  try {
+    const { random } = req.query;
+
+    if (!random) {
+      return res.status(400).json({ success: false, message: "Random number is required" });
+    }
+
+    const student = await Student.findOne({ qrCodeValue: random });
+
+    if (!student) {
+      return res.status(404).json({ success: false, message: "Student not found" });
+    }
+
+    // Only send selected fields
+    const filteredStudent = {
+      _id: student._id,
+      name: student.name,
+      sclassName: student.sclassName,
+      school: student.school,
+      qrCodeValue: student.qrCodeValue,
+      qrCodeExpiresAt: student.qrCodeExpiresAt
+    };
+
+    res.status(200).json({ success: true, student: filteredStudent });
+  } catch (error) {
+    console.error("Error finding student by QR code:", error);
+    res.status(500).json({ success: false, error: error.message });
+  }
+};
+
+
+
+
 
 const studentRegister = async (req, res) => {
     try {
@@ -348,6 +408,7 @@ module.exports = {
     deleteStudentsByClass,
     updateExamResult,
     generateQRCode,
+    getStudentByRandomNumber,
     clearAllStudentsAttendanceBySubject,
     clearAllStudentsAttendance,
     removeStudentAttendanceBySubject,
