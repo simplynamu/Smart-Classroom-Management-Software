@@ -9,9 +9,6 @@ Access records, view marks, and communicate effortlessly.
 </h3>
 
 <br>
-[Youtube Video](https://youtu.be/ol650KwQkgY?si=rKcboqSv3n-e4UbC)
-<br><br>
-[LinkedIn](https://www.linkedin.com/in/yogndr/)
 
 # About
 
@@ -110,83 +107,11 @@ Additionally:
 
 These steps should resolve the network error in the frontend. If the issue persists, feel free to contact me for further assistance.
 
-# Delete Feature Not Working Solution
 
-When attempting to delete items, you may encounter a popup message stating, "Sorry, the delete function has been disabled for now." This message appears because I have disabled the delete function on my live site to prevent guests from deleting items. If you wish to enable the delete feature, please follow these steps:
-
-1. Navigate to the `frontend > src > redux > userRelated > userHandle.js` file.
-
-2. If you haven't made any changes, you should find the `deleteUser` function at line 71. It may be commented out. It might look like this:
-
-```javascript
-// export const deleteUser = (id, address) => async (dispatch) => {
-//     dispatch(getRequest());
-
-//     try {
-//         const result = await axios.delete(`${process.env.REACT_APP_BASE_URL}/${address}/${id}`);
-//         if (result.data.message) {
-//             dispatch(getFailed(result.data.message));
-//         } else {
-//             dispatch(getDeleteSuccess());
-//         }
-//     } catch (error) {
-//         dispatch(getError(error));
-//     }
-// }
-```
-
-3. Uncomment above `deleteUser` function and comment out this `deleteUser` function that is currently running from line 87 to line 90 :
-
-```javascript
-export const deleteUser = (id, address) => async (dispatch) => {
-    dispatch(getRequest());
-    dispatch(getFailed("Sorry the delete function has been disabled for now."));
-}
-```
-
-4. If you have previously modified the code, you may find the `deleteUser` functions at different lines. In this case, uncomment the original code and comment out the current one.
-
-5. Next, navigate to the `frontend > src > pages > admin` folder. Here, you will find different folders suffixed with "Related". Open each folder and locate files prefixed with "Show".
-
-6. Open each file with "Show" as a prefix and search for a function named `deleteHandler`. For example:
-   
-```javascript
-const deleteHandler = (deleteID, address) => {
-  console.log(deleteID);
-  console.log(address);
-  setMessage("Sorry, the delete function has been disabled for now.");
-  setShowPopup(true);
-  // dispatch(deleteUser(deleteID, address))
-  //   .then(() => {
-  //     dispatch(getAllSclasses(adminID, "Sclass"));
-  //   })
-}
-```
-
-7. This is an example snippet from `ShowClasses`. In other files with "Show" as a prefix, it may differ.
-
-8. Uncomment the commented-out code inside the `deleteHandler` function and comment out the existing code. It should resemble this:
-
-```javascript
-const deleteHandler = (deleteID, address) => {
-  // console.log(deleteID);
-  // console.log(address);
-  // setMessage("Sorry, the delete function has been disabled for now.");
-  // setShowPopup(true);
-  dispatch(deleteUser(deleteID, address))
-    .then(() => {
-      dispatch(getAllSclasses(adminID, "Sclass"));
-    })
-}
-```
-
-9. Repeat these steps for every other file. In some cases, the `deleteHandler` function may also be found in files prefixed with "View". Check those files and repeat the same process.
+4. Repeat these steps for every other file. In some cases, the `deleteHandler` function may also be found in files prefixed with "View". Check those files and repeat the same process.
 
 If the issue persists, feel free to contact me for further assistance.
 
 Don't forget to leave a star for this project if you found the solution helpful. Thank you!
 
-# Deployment
-* Render - server side
-* Netlify - client side
 
