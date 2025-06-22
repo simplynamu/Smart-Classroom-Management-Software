@@ -1,192 +1,137 @@
-<h1 align="center">
-    SCHOOL MANAGEMENT SYSTEM
-</h1>
+# SMART CLASSROOM MANAGEMENT SOFTWARE
 
-<h3 align="center">
-Streamline school management, class organization, and add students and faculty.<br>
-Seamlessly track attendance, assess performance, and provide feedback. <br>
-Access records, view marks, and communicate effortlessly.
-</h3>
+### A web-based solution to streamline school operations, organize classrooms, manage users, and facilitate seamless communication.  
+Track attendance, assess performance, visualize data, and communicate — all in one platform.
 
-<br>
-[Youtube Video](https://youtu.be/ol650KwQkgY?si=rKcboqSv3n-e4UbC)
-<br><br>
-[LinkedIn](https://www.linkedin.com/in/yogndr/)
+---
 
-# About
+## 🚀 About the Project
 
-The School Management System is a web-based application built using the MERN (MongoDB, Express.js, React.js, Node.js) stack. It aims to streamline school management, class organization, and facilitate communication between students, teachers, and administrators.
+**Smart Classroom Management Software** is a full-stack web application built with the **MERN stack** (MongoDB, Express.js, React.js, Node.js). It aims to digitize and simplify the management of school operations for **Admins**, **Teachers**, and **Students**.
 
-## Features
+---
 
-- **User Roles:** The system supports three user roles: Admin, Teacher, and Student. Each role has specific functionalities and access levels.
+## ✨ Features
 
-- **Admin Dashboard:** Administrators can add new students and teachers, create classes and subjects, manage user accounts, and oversee system settings.
+- **Role-Based Access:**
+  - **Admin:** Manage students, teachers, classes, subjects, and system settings.
+  - **Teacher:** Take attendance, assess students, provide feedback, and communicate.
+  - **Student:** View attendance, performance reports, and messages.
 
-- **Attendance Tracking:** Teachers can easily take attendance for their classes, mark students as present or absent, and generate attendance reports.
+- **Attendance Tracking:**  
+  Teachers can mark students as present or absent and generate attendance reports.
 
-- **Performance Assessment:** Teachers can assess students' performance by providing marks and feedback. Students can view their marks and track their progress over time.
+- **Performance Evaluation:**  
+  Teachers can assign marks and feedback. Students can view progress over time.
 
-- **Data Visualization:** Students can visualize their performance data through interactive charts and tables, helping them understand their academic performance at a glance.
+- **Data Visualization:**  
+  Performance data is presented using interactive charts and tables.
 
-- **Communication:** Users can communicate effortlessly through the system. Teachers can send messages to students and vice versa, promoting effective communication and collaboration.
+- **Built-in Communication:**  
+  Messaging system for direct communication between teachers and students.
 
-## Technologies Used
+---
 
-- Frontend: React.js, Material UI, Redux
-- Backend: Node.js, Express.js
-- Database: MongoDB
+## 🛠️ Tech Stack
 
-<br>
+- **Frontend:** React.js, Material UI, Redux  
+- **Backend:** Node.js, Express.js  
+- **Database:** MongoDB
 
-# Installation
+---
+
+## ⚙️ Installation & Setup
+
+### Step 1: Clone the Repository
 
 ```sh
 git clone https://github.com/Yogndrr/MERN-School-Management-System.git
 ```
-Open 2 terminals in separate windows/tabs.
 
-Terminal 1: Setting Up Backend 
+### Step 2: Backend Setup
+
 ```sh
 cd backend
 npm install
 npm start
 ```
 
-Create a file called .env in the backend folder.
-Inside it write this :
+Create a `.env` file inside the `backend` folder and add:
 
-```sh
+```env
 MONGO_URL = mongodb://127.0.0.1/school
 ```
-If you are using MongoDB Compass you can use this database link but if you are using MongoDB Atlas then instead of this link write your own database link.
 
-Terminal 2: Setting Up Frontend
+> 🔍 Replace with your own MongoDB URI if using MongoDB Atlas.
+
+### Step 3: Frontend Setup
+
+Open a new terminal:
+
 ```sh
 cd frontend
 npm install
 npm start
 ```
-Now, navigate to `localhost:3000` in your browser. 
-The Backend API will be running at `localhost:5000`.
-<br>
-# Error Solution
 
-You might encounter an error while signing up, either a network error or a loading error that goes on indefinitely.
+- Frontend: http://localhost:3000  
+- Backend API: http://localhost:5000
 
-To resolve it:
+---
 
-1. Navigate to the `frontend > .env` file.
+## 🧩 Resolving Signup Errors
 
-2. Uncomment the first line. After that, terminate the frontend terminal. Open a new terminal and execute the following commands:
+If you encounter **network errors** or **endless loading** during signup:
+
+### Step 1: Update Frontend Environment
+
+1. Go to `frontend/.env`  
+2. Uncomment the first line (if commented out)
+3. Restart the frontend:
+
 ```sh
 cd frontend
 npm start
 ```
 
-After completing these steps, try signing up again. If the issue persists, follow these additional steps to resolve it:
+### Step 2: Update API Base URL in Code
 
-1. Navigate to the `frontend > src > redux > userRelated > userHandle.js` file.
+1. Open:  
+   `frontend/src/redux/userRelated/userHandle.js`
 
-2. Add the following line after the import statements:
+2. Add after imports:
 
-```javascript
+```js
 const REACT_APP_BASE_URL = "http://localhost:5000";
 ```
 
-3. Replace all instances of `process.env.REACT_APP_BASE_URL` with `REACT_APP_BASE_URL`.
+3. Replace all instances of:
 
-**IMPORTANT:** Repeat the same process for all other files with "Handle" in their names.
-
-For example, in the `redux` folder, there are other folders like `userRelated`. In the `teacherRelated` folder, you'll find a file named `teacherHandle`. Similarly, other folders contain files with "Handle" in their names. Make sure to update these files as well.
-
-The issue arises because the `.env` file in the frontend may not work for all users, while it works for me.
-
-Additionally:
-
-- When testing the project, start by signing up rather than logging in as a guest or using regular login if you haven't created an account yet.
-  
-  To use guest mode, navigate to `LoginPage.js` and provide an email and password from a project already created in the system. This simplifies the login process, and after creating your account, you can use your credentials.
-
-These steps should resolve the network error in the frontend. If the issue persists, feel free to contact me for further assistance.
-
-# Delete Feature Not Working Solution
-
-When attempting to delete items, you may encounter a popup message stating, "Sorry, the delete function has been disabled for now." This message appears because I have disabled the delete function on my live site to prevent guests from deleting items. If you wish to enable the delete feature, please follow these steps:
-
-1. Navigate to the `frontend > src > redux > userRelated > userHandle.js` file.
-
-2. If you haven't made any changes, you should find the `deleteUser` function at line 71. It may be commented out. It might look like this:
-
-```javascript
-// export const deleteUser = (id, address) => async (dispatch) => {
-//     dispatch(getRequest());
-
-//     try {
-//         const result = await axios.delete(`${process.env.REACT_APP_BASE_URL}/${address}/${id}`);
-//         if (result.data.message) {
-//             dispatch(getFailed(result.data.message));
-//         } else {
-//             dispatch(getDeleteSuccess());
-//         }
-//     } catch (error) {
-//         dispatch(getError(error));
-//     }
-// }
+```js
+process.env.REACT_APP_BASE_URL
 ```
 
-3. Uncomment above `deleteUser` function and comment out this `deleteUser` function that is currently running from line 87 to line 90 :
+with:
 
-```javascript
-export const deleteUser = (id, address) => async (dispatch) => {
-    dispatch(getRequest());
-    dispatch(getFailed("Sorry the delete function has been disabled for now."));
-}
+```js
+REACT_APP_BASE_URL
 ```
 
-4. If you have previously modified the code, you may find the `deleteUser` functions at different lines. In this case, uncomment the original code and comment out the current one.
+4. Repeat this process in all files containing `"Handle"` in the filename, such as:
+   - `teacherHandle.js`
+   - `adminHandle.js`
+   - Any `View` files that use a `deleteHandler` function
 
-5. Next, navigate to the `frontend > src > pages > admin` folder. Here, you will find different folders suffixed with "Related". Open each folder and locate files prefixed with "Show".
+---
 
-6. Open each file with "Show" as a prefix and search for a function named `deleteHandler`. For example:
-   
-```javascript
-const deleteHandler = (deleteID, address) => {
-  console.log(deleteID);
-  console.log(address);
-  setMessage("Sorry, the delete function has been disabled for now.");
-  setShowPopup(true);
-  // dispatch(deleteUser(deleteID, address))
-  //   .then(() => {
-  //     dispatch(getAllSclasses(adminID, "Sclass"));
-  //   })
-}
-```
+## 🔐 Signup & Login Notes
 
-7. This is an example snippet from `ShowClasses`. In other files with "Show" as a prefix, it may differ.
+- Start by **signing up** if you haven’t created an account.
+- For **guest login**, open `LoginPage.js` and use existing credentials from the system (email and password).
 
-8. Uncomment the commented-out code inside the `deleteHandler` function and comment out the existing code. It should resemble this:
+---
 
-```javascript
-const deleteHandler = (deleteID, address) => {
-  // console.log(deleteID);
-  // console.log(address);
-  // setMessage("Sorry, the delete function has been disabled for now.");
-  // setShowPopup(true);
-  dispatch(deleteUser(deleteID, address))
-    .then(() => {
-      dispatch(getAllSclasses(adminID, "Sclass"));
-    })
-}
-```
+## ⭐ Support
 
-9. Repeat these steps for every other file. In some cases, the `deleteHandler` function may also be found in files prefixed with "View". Check those files and repeat the same process.
-
-If the issue persists, feel free to contact me for further assistance.
-
-Don't forget to leave a star for this project if you found the solution helpful. Thank you!
-
-# Deployment
-* Render - server side
-* Netlify - client side
-
+If this project helped you, **please consider leaving a star ⭐**  
+Still facing issues? **Feel free to contact me** for assistance!
