@@ -45,7 +45,7 @@ Track attendance, assess performance, visualize data, and communicate — all in
 ### Step 1: Clone the Repository
 
 ```sh
-git clone https://github.com/Yogndrr/MERN-School-Management-System.git
+git clone https://github.com/HelloChetan/SCMS.git
 ```
 
 ### Step 2: Backend Setup
