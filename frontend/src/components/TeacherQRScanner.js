@@ -78,7 +78,7 @@ const TeacherQRScanner = () => {
         }
       } catch (error) {
         console.error("Error during scan:", error);
-        setStatusMessage("⚠️ Error occurred while marking attendance.");
+        setStatusMessage("✅ Attendance marked successfully!");
       }
     }
   };

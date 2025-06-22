@@ -1,0 +1,33 @@
+.teacher-notes {
+    padding: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .teacher-notes form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .teacher-notes input, .teacher-notes select, .teacher-notes textarea {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .teacher-notes button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .note-item {
+    background-color: white;
+    padding: 30px;
+    border-left: 4px solid #4caf50;
+    margin-bottom: 10px;
+  }

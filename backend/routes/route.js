@@ -1,4 +1,6 @@
-const router = require('express').Router();
+const express = require('express');
+const router = express.Router();
+
 //const { adminRegister, adminLogIn, deleteAdmin, getAdminDetail, updateAdmin } = require('../controllers/admin-controller.js');
 const { adminRegister, adminLogIn, getAdminDetail} = require('../controllers/admin-controller.js');
 const { markAttendance } = require('../controllers/attendanceController.js');
@@ -24,7 +26,11 @@ const {
     removeStudentAttendance } = require('../controllers/student_controller.js');
 const { subjectCreate, classSubjects, deleteSubjectsByClass, getSubjectDetail, deleteSubject, freeSubjectList, allSubjects, deleteSubjects } = require('../controllers/subject-controller.js');
 const { teacherRegister, teacherLogIn, getTeachers, getTeacherDetail, deleteTeachers, deleteTeachersByClass, deleteTeacher, updateTeacherSubject, teacherAttendance } = require('../controllers/teacher-controller.js');
+const noteRoutes = require('./notes');
+const path = require('path');
 
+router.use('/uploads', express.static(path.join(__dirname, 'uploads'))); // To serve uploaded files
+router.use('/api/notes', noteRoutes);
 // Admin
 router.post('/AdminReg', adminRegister);
 router.post('/AdminLogin', adminLogIn);

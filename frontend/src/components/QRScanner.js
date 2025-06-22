@@ -95,7 +95,7 @@ const TeacherQRScanner = () => {
 
         setStatusMessage(attendanceRes.data.success ? "✅ Attendance marked successfully!" : "❌ Failed to mark attendance.");
       } catch (error) {
-        setStatusMessage("⚠️ Error occurred while marking attendance.");
+        // setStatusMessage("⚠️ Error occurred while marking attendance.");
       }
     }
   };

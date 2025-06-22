@@ -8,7 +8,9 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 import AnnouncementOutlinedIcon from '@mui/icons-material/AnnouncementOutlined';
 import ClassOutlinedIcon from '@mui/icons-material/ClassOutlined';
 import { useSelector } from 'react-redux';
-
+import NoteIcon from '@mui/icons-material/Note';
+// Add this at the top of StudentSideBar.js and TeacherSideBar.js
+// import ListItem from '@mui/material/ListItem';
 
 import QrCodeScannerIcon from '@mui/icons-material/QrCodeScanner'; // QR icon
 
@@ -47,6 +49,12 @@ const TeacherSideBar = () => {
                 </ListItemButton>
             </React.Fragment>
             <Divider sx={{ my: 1 }} />
+            <ListItem disablePadding>
+             <ListItemButton component={Link} to="/teacher/notes">
+             <ListItemIcon><NoteIcon /></ListItemIcon>
+             <ListItemText primary="Notes" />
+            </ListItemButton>
+             </ListItem>
             <React.Fragment>
                 <ListSubheader component="div" inset>
                     User

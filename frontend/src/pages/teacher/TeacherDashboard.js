@@ -24,7 +24,7 @@ import TeacherProfile from './TeacherProfile';
 import TeacherViewStudent from './TeacherViewStudent';
 import StudentExamMarks from '../admin/studentRelated/StudentExamMarks';
 import QRScanner from '../../components/QRScanner';
-
+import TeacherNotes from '../../components/TeacherNotes'; // Import at the top
 const TeacherDashboard = () => {
     const [open, setOpen] = useState(true);
     const toggleDrawer = () => {
@@ -81,7 +81,7 @@ const TeacherDashboard = () => {
                         <Route path="/Teacher/profile" element={<TeacherProfile />} />
                         
                         <Route path="/Teacher/scan" element={<QRScanner />} /> 
-
+                        <Route path="/teacher/notes" element={<TeacherNotes />} />
 
                         <Route path="/Teacher/complain" element={<TeacherComplain />} />
 

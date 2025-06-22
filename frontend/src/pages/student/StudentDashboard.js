@@ -22,6 +22,7 @@ import Logout from '../Logout'
 import AccountMenu from '../../components/AccountMenu';
 import { AppBar, Drawer } from '../../components/styles';
 import { useEffect } from 'react';
+import StudentNotes from '../../components/StudentNotes'; // Import at the top
 
 const StudentDashboard = () => {
     const [open, setOpen] = useState(true);
@@ -88,7 +89,7 @@ const StudentDashboard = () => {
                         <Route path='*' element={<Navigate to="/" />} />
                         <Route path="/Student/dashboard" element={<StudentHomePage />} />
                         <Route path="/Student/profile" element={<StudentProfile />} />
-
+                        <Route path="/student/notes" element={<StudentNotes />} />
                         <Route path="/Student/subjects" element={<StudentSubjects />} />
                         <Route path="/Student/attendance" element={<ViewStdAttendance />} />
                         <Route path="/Student/complain" element={<StudentComplain />} />
